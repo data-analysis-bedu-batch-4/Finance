@@ -20,4 +20,9 @@ export class UserRepository extends Repository<User> {
             this.logger.error(`Failed to insert user: ${user.firstName} ${user.lastName}`);
           }
     }
+    async getAllUsers(): Promise<User[]> {
+      const users: User[] = await this.createQueryBuilder("allUsers")
+        .getMany();
+      return users;
+    }
 }

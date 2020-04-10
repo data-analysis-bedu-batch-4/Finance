@@ -13,4 +13,7 @@ export class UserService {
     async insertUser(userInsertionDto: UserInsertionDto): Promise<User>  {
         return await this.userRepository.insertUser(userInsertionDto);
     }
+    async getAllUsers(): Promise<User[]>  {
+        return await this.userRepository.getAllUsers();
+    }
 }

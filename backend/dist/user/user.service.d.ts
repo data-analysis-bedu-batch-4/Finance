@@ -5,4 +5,5 @@ export declare class UserService {
     private userRepository;
     constructor(userRepository: UserRepository);
     insertUser(userInsertionDto: UserInsertionDto): Promise<User>;
+    getAllUsers(): Promise<User[]>;
 }

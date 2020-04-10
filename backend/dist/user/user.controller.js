@@ -22,6 +22,9 @@ let UserController = class UserController {
     async insertUser(userInsertionDto) {
         return await this.userService.insertUser(userInsertionDto);
     }
+    async getAllUsers() {
+        return await this.userService.getAllUsers();
+    }
 };
 __decorate([
     common_1.Post("insert"),
@@ -30,6 +33,12 @@ __decorate([
     __metadata("design:paramtypes", [user_insertion_dto_1.UserInsertionDto]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "insertUser", null);
+__decorate([
+    common_1.Get("all"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "getAllUsers", null);
 UserController = __decorate([
     common_1.Controller('user'),
     __metadata("design:paramtypes", [user_service_1.UserService])

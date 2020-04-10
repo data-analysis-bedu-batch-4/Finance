@@ -29,6 +29,11 @@ let UserRepository = class UserRepository extends typeorm_1.Repository {
             this.logger.error(`Failed to insert user: ${user.firstName} ${user.lastName}`);
         }
     }
+    async getAllUsers() {
+        const users = await this.createQueryBuilder("allUsers")
+            .getMany();
+        return users;
+    }
 };
 UserRepository = __decorate([
     typeorm_1.EntityRepository(user_entity_1.User)

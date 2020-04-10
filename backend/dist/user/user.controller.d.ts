@@ -5,4 +5,5 @@ export declare class UserController {
     private userService;
     constructor(userService: UserService);
     insertUser(userInsertionDto: UserInsertionDto): Promise<User>;
+    getAllUsers(): Promise<User[]>;
 }
