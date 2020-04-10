@@ -6,6 +6,7 @@ const common_1 = require("@nestjs/common");
 async function bootstrap() {
     const logger = new common_1.Logger("bootstrap");
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    app.enableCors();
     const port = 3000;
     await app.listen(3000);
     logger.log(`Application listening on port ${port}`);
