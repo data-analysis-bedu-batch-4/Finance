@@ -10,9 +10,11 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "now-start": "vue-cli-service serve",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "start:dev": "npm run dev"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "core-js": "^3.6.2",
     "vue": "^2.6.11",
     "vue-i18n": "^8.15.3",
