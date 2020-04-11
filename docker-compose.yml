@@ -1,9 +1,8 @@
 version: "3.1"
 
 services:
-  finance-db:
-    container_name: "finance-db-container"
-    image: postgres
+  postgres:
+    image: "postgres:latest"
     restart: always
     environment:
       POSTGRES_USER: "${DATABASE_USER}"
@@ -13,9 +12,34 @@ services:
       - ./postgresql:/var/lib/postgresql/
     ports:
         - "5432:5432"
+  
+  backend:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./backend
+    volumes:
+      - /app/node_modules
+      - ./backend:/app
+    environment:
+      - DATABASE_USER=dev
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=finance_db
+      - DATABASE_PASSWORD=F1N4nC3
+  
+  frontend:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./frontend
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8081:8080
+
+  
+

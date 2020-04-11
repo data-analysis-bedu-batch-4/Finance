@@ -26,7 +26,7 @@ export default {
   actions: {
     getAllUsers ({ state, commit }) {
       axios
-        .get('/user/all')
+        .get('/api/user/all')
         .then(res => {
           commit('setUsers', res.data)
         })
@@ -34,7 +34,7 @@ export default {
     },
     insertUser ({ state, commit }, user) {
       axios
-        .post('/user/insert', user)
+        .post('/api/user/insert', user)
         .then(res => {
           commit('insertUser', res.data)
         })
