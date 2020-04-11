@@ -20,7 +20,6 @@ AppModule = __decorate([
     common_1.Module({
         imports: [
             config_1.ConfigModule.forRoot({
-                envFilePath: ".development.env",
                 isGlobal: true,
                 load: [database_config_1.default]
             }),

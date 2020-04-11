@@ -20,7 +20,7 @@ import './plugins/chartist'
 import './plugins/vee-validate'
 import vuetify from './plugins/vuetify'
 import i18n from './i18n'
-import axios from 'axios'
+// import axios from 'axios'
 
 Vue.config.productionTip = false
 // axios.defaults.baseURL = 'http://localhost:3000'

@@ -13,6 +13,14 @@ services:
     ports:
         - "5432:5432"
   
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "3050:80"
+
   backend:
     build:
       dockerfile: Dockerfile.dev
@@ -21,11 +29,11 @@ services:
       - /app/node_modules
       - ./backend:/app
     environment:
-      - DATABASE_USER=dev
-      - DATABASE_HOST=postgres
-      - DATABASE_PORT=5432
-      - DATABASE_NAME=finance_db
-      - DATABASE_PASSWORD=F1N4nC3
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
   
   frontend:
     build:

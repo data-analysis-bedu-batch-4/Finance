@@ -9,7 +9,7 @@ import databaseConfig from "./config/database.config";
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ".development.env",
+      // envFilePath: ".development.env",
       isGlobal: true,
       load: [databaseConfig]
     }),
