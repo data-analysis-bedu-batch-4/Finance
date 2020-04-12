@@ -22,4 +22,14 @@ after_success:
   - docker push davidsantander/multi-nginx
   - docker push davidsantander/multi-backend
 
-  
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: finance
+  env: Finance-env
+  bucket_name: elasticbeanstalk-us-east-2-452495906375
+  bucket_path: docker-multi
+  on:
+    branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
