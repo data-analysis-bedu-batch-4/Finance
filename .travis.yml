@@ -1,12 +1,12 @@
 sudo: required
 services:
-  -  docker
+  - docker
 
-# before_install:
-#   - docker build -t davidsantander/vue-test -f ./frontend/Dockerfile.dev ./frontend
+before_install:
+  - docker build -t davidsantander/vue-test -f ./frontend/Dockerfile.dev ./frontend
 
-# script:
-#   - docker run davidsantander/vue-test npm test -- --coverage
+script:
+  - docker run -e CI=true USERNAME/react-test npm test
 
 after_success:
   - docker build -t davidsantander/multi-frontend ./frontend
