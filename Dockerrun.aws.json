@@ -6,7 +6,7 @@
             "image": "davidsantander/multi-client",
             "hostname": "client",
             "essential": false,
-            "memory": 256
+            "memory": 512
         },
         {
             "name": "server",

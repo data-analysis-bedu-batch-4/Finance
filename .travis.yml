@@ -23,7 +23,7 @@ deploy:
   edge: true
   provider: elasticbeanstalk
   region: us-east-2
-  app: finance
+  app: multi-finance
   env: Finance-env
   bucket_name: elasticbeanstalk-us-east-2-452495906375
   bucket_path: docker-multi
