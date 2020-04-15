@@ -1,0 +1,32 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t davidsantander/vue-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true davidsantander/vue-test npm test
+after_success:
+  - docker build -t davidsantander/multi-client ./client
+  - docker build -t davidsantander/multi-nginx ./nginx
+  - docker build -t davidsantander/multi-server ./server
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push davidsantander/multi-client
+  - docker push davidsantander/multi-nginx
+  - docker push davidsantander/multi-server
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-finance
+  env: MultiFinance-env
+  bucket_name: elasticbeanstalk-us-east-2-452495906375
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

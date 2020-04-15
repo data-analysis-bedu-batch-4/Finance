@@ -21,13 +21,13 @@ services:
     ports:
       - "3050:80"
 
-  backend:
+  api:
     build:
       dockerfile: Dockerfile.dev
-      context: ./backend
+      context: ./server
     volumes:
       - /app/node_modules
-      - ./backend:/app
+      - ./server:/app
     environment:
       - DATABASE_USER=${DATABASE_USER}
       - DATABASE_HOST=${DATABASE_HOST}
@@ -35,13 +35,13 @@ services:
       - DATABASE_NAME=${DATABASE_NAME}
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
   
-  frontend:
+  client:
     build:
       dockerfile: Dockerfile.dev
-      context: ./frontend
+      context: ./client
     volumes:
       - /app/node_modules
-      - ./frontend:/app
+      - ./client:/app
 
   adminer:
     image: adminer
